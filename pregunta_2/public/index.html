@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="angular">  
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog AQP</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+</head>  
+<body ng-controller="mainController">  
+    <div class="container"> 
+    <!--Cabecera-->
+        <div class="jumbotron text-center">
+            <h1>BLOG AQP <span class="label label-info">{{ todos.length }}</span></h1>
+        </div>
+        <!--Lista de Todos-->
+        <div id="todo-list" class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="text" ng-repeat="blog in todos">
+                    <label>
+                        {{ blog.titulo }} 
+					</label>:
+					<br> </br>
+					 <label>
+						{{blog.publicacion}}
+                    </label><br>Publicado el:<label>
+						{{blog.fechaPublicacion}}
+                    </label></br>
+					
+					<br> </br>
+					<label>
+					     <IMG SRC="{{blog.foto}}" WIDTH=178 HEIGHT=180 ALT="">
+						
+                    </label>
+					<br> <label> {{blog.autor}}</label></br>
+                </div>
+            </div>
+        </div>
+         <!--Formulario para insertar nuevos Todo-->
+        <div id="todo-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg text-center" placeholder="Inserta un Título al Post" ng-model="formData.titulo">
+                    </div>
+					<div class="form-group">
+                        <input type="text" class="form-control input-lg text-center" placeholder="Comenta tu Post" ng-model="formData.publicacion">
+                    </div>
+					<div class="form-group">
+                        <input type="text" class="form-control input-lg text-center" placeholder="Ingresa el URL de tu imagen" ng-model="formData.foto">
+                    </div>
+					<div class="form-group">
+                        <input type="text" class="form-control input-lg text-center" placeholder="Indica el nombre con el que deseas Postear" ng-model="formData.autor">
+                    </div>
+                    <button class="btn btn-primary btn-lg" ng-click="createTodo()">Postear</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <script src="main.js"></script>
+</body>  
+</html>  
